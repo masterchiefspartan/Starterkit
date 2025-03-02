@@ -120,6 +120,86 @@ documentation/
 
 These documentation files serve as a reference for your project's features and implementation details.
 
+## Voice Service Components
+
+The Kaizen Flow application now includes voice interaction capabilities through the following components:
+
+### VoiceService
+
+A service that handles voice recognition and text-to-speech functionality. Located at `src/services/VoiceService.ts`.
+
+Features:
+- Audio recording with optimized settings for speech recognition
+- Client-side silence detection
+- Integration with OpenAI's Whisper API for high-accuracy transcription
+- Fallback to on-device recognition when Whisper API is unavailable
+- Text-to-speech capabilities
+
+### Voice UI Components
+
+Three reusable UI components are available to implement voice interactions:
+
+1. **VoiceRecorder** - A standalone component for recording and transcribing speech
+   ```jsx
+   import { VoiceRecorder } from './components';
+   
+   <VoiceRecorder 
+     onTranscriptionComplete={(text) => console.log('Transcribed:', text)} 
+     placeholder="Tap to speak..."
+     apiKey="your-openai-api-key" // Optional
+   />
+   ```
+
+2. **VoiceInput** - A text input with voice recognition capabilities
+   ```jsx
+   import { VoiceInput } from './components';
+   import { useState } from 'react';
+   
+   function MyComponent() {
+     const [text, setText] = useState('');
+     
+     return (
+       <VoiceInput
+         value={text}
+         onChangeText={setText}
+         placeholder="Type or speak..."
+       />
+     );
+   }
+   ```
+
+3. **VoiceAssistant** - A conversational interface with voice input and output
+   ```jsx
+   import { VoiceAssistant } from './components';
+   
+   <VoiceAssistant 
+     initialMessage="How can I help you today?"
+     onMessageReceived={(message) => console.log('New message:', message)}
+   />
+   ```
+
+### Configuration
+
+The VoiceService can be configured with the following options:
+
+```typescript
+// Configure VoiceService
+import VoiceService from '../src/services/VoiceService';
+
+// Access the singleton instance
+const voiceServiceInstance = VoiceService as any;
+voiceServiceInstance.options = {
+  // Override default options
+  silenceDetectionThreshold: 3, // Number of checks with no file size change
+  silenceCheckInterval: 500, // Interval in ms to check for silence
+  maxRecordingDuration: 30000, // 30 seconds max recording
+  useWhisperAPI: true, // Use Whisper API by default
+  openAIApiKey: 'your-openai-api-key', // API key for Whisper
+};
+```
+
+For more details, see the component documentation and examples.
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.

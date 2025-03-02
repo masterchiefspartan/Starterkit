@@ -1,0 +1,46 @@
+{
+  "rules": [
+    {
+      "name": "best-practices",
+      "description": "Best practices to implement for the tech stack used",
+      "glob": "**/*.{ts,tsx,js,jsx}",
+      "path": "rules/best-practices.md"
+    },
+    {
+      "name": "security-practices",
+      "description": "Security best practices for the application",
+      "glob": "**/*.{ts,tsx,js,jsx}",
+      "path": "rules/security-practices.md"
+    },
+    {
+      "name": "debugging-guidelines",
+      "description": "Guidelines for debugging the application",
+      "glob": "**/*.{ts,tsx,js,jsx}",
+      "path": "rules/debugging-guidelines.md"
+    },
+    {
+      "name": "voice-service-best-practices",
+      "description": "Best practices for voice service implementation",
+      "glob": "**/services/VoiceService.ts",
+      "path": "rules/voice-service-best-practices.md"
+    },
+    {
+      "name": "project-docs-rules",
+      "description": "Project documentation rules",
+      "glob": "**/*.md",
+      "path": "rules/project-docs-rules.md"
+    },
+    {
+      "name": "dependency-management",
+      "description": "Guidelines for managing dependencies and avoiding deprecated packages",
+      "glob": "**/{package.json,package-lock.json}",
+      "path": "rules/dependency-management.md"
+    },
+    {
+      "name": "code-modification",
+      "description": "Guidelines for adding, modifying, and removing code",
+      "glob": "**/*.{ts,tsx,js,jsx}",
+      "path": "rules/code-modification.md"
+    }
+  ]
+} 
