@@ -1,39 +1,40 @@
 import React from 'react';
-import { Button, StyleSheet, View } from 'react-native';
-import { router } from 'expo-router';
-import Authentication from '../src/authentication';
-import { ThemedText } from '@/components/ThemedText';
+import { View, Text, StyleSheet } from 'react-native';
+import { Link } from 'expo-router';
 
-const App = () => {
+export default function Home() {
   return (
     <View style={styles.container}>
-      <ThemedText type="title">Welcome to Kaizen Flow</ThemedText>
-      <View style={styles.link}>
-        <Button 
-          title="Open Voice Components Demo" 
-          onPress={() => {
-            // Navigate to the voice demo screen using Expo Router
-            // Using the path with leading slash to match the expected type
-            router.push('/voice-demo');
-          }}
-        />
-      </View>
-      <Authentication />
+      <Text style={styles.title}>Welcome to Kaizen Flow</Text>
+      <Link href="/test" style={styles.link}>
+        <Text style={styles.linkText}>Go to Test Screen</Text>
+      </Link>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
   },
-  link: {
-    marginTop: 20,
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
     marginBottom: 20,
   },
+  link: {
+    backgroundColor: '#007AFF',
+    padding: 15,
+    borderRadius: 8,
+    marginTop: 20,
+  },
+  linkText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
 });
-
-export default App;
